@@ -124,12 +124,8 @@ const DetailPage = ({ id }) => {
             <div class="border-countries flex gap-2 flex-wrap pe-10 ">
               {country[0]?.borders
                 ? country[0]?.borders.map((border) => (
-                    <Link href={`/api/country/${border}`}>
-                      <Button
-                        onClick={() => navigate()}
-                        id={border}
-                        class="border-btn"
-                      >
+                    <Link href={`/country/${border}`} key={border}>
+                      <Button id={border} class="border-btn">
                         {border}
                       </Button>
                     </Link>
