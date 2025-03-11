@@ -1,8 +1,6 @@
-import { useQuery } from "@tanstack/react-query";
 import { Button } from "antd";
 import { ArrowLeftOutlined } from "@ant-design/icons";
 import { useTranslation } from "react-i18next";
-// import { getCountryDetails } from "../../../utils/getCountry";
 import Link from "next/link";
 import useSWR from "swr";
 import { useRouter } from "next/router";
@@ -18,30 +16,22 @@ import { getCountryDetails } from "../../utils/getCountry";
 //       },
 //     };
 //   });
-//   console.log(paths);
 
 //   return { paths, fallback: true };
 // };
 
 export const getServerSideProps = async (context) => {
-  // const res = await fetch(
-  //   `https://restcountries.com/v3.1/alpha/${context.params.id}`
-  // );
-  // const country = await res.json();
   return { props: { id: context.params.id } };
 };
 
 const DetailPage = ({ id }) => {
   const { t, i18n } = useTranslation();
   const router = useRouter();
-  // const { id } = router.query;
   const {
     data: country,
     isLoading,
     error,
   } = useSWR(`https://restcountries.com/v3.1/alpha/${id}`, getCountryDetails);
-
-  console.log(country);
 
   if (isLoading) {
     return (
@@ -58,7 +48,7 @@ const DetailPage = ({ id }) => {
   if (country)
     return (
       <main class="dark:text-[#fff] min-h-[calc(100vh-4rem)] px-20">
-        <Link href={"/home"}>
+        <Link href={"/"}>
           <Button className="mt-10">
             {
               <ArrowLeftOutlined

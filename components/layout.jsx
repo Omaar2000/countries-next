@@ -10,7 +10,6 @@ export default function Layout({ children }) {
   let mode, direction;
   const [isDark, setIsDark] = useState(true);
   const [dir, setDir] = useState(direction);
-  const queryClient = new QueryClient();
 
   useEffect(() => {
     const { mode: colorMode, direction: dir } = loadInitialStates();
@@ -29,16 +28,14 @@ export default function Layout({ children }) {
         },
       }}
     >
-      <QueryClientProvider client={queryClient}>
-        <div dir={dir} className="dark:bg-[#202c37]">
-          <Navbar
-            onChangeLanguage={() => setDir(toggleLanguage())}
-            onChangeMode={() => setIsDark(toggleDarkMode(isDark))}
-            isDark={isDark}
-          />
-          <main>{children}</main>
-        </div>
-      </QueryClientProvider>
+      <div dir={dir} className="dark:bg-[#202c37]">
+        <Navbar
+          onChangeLanguage={() => setDir(toggleLanguage())}
+          onChangeMode={() => setIsDark(toggleDarkMode(isDark))}
+          isDark={isDark}
+        />
+        <main>{children}</main>
+      </div>
     </ConfigProvider>
   );
 }
