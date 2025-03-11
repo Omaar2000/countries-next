@@ -5,9 +5,10 @@ import { useTranslation } from "react-i18next";
 import { toggleDarkMode } from "../utils/toggleMode";
 import { loadInitialStates } from "../utils/loadInitialStates";
 import { toggleLanguage } from "../utils/toggleLang";
+import { useRouter } from "next/router";
 
 export default function Home() {
-  const { t } = useTranslation();
+  const router = useRouter();
 
-  return <></>;
+  router.push("/home");
 }
