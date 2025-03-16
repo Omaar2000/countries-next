@@ -1,4 +1,3 @@
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import Navbar from "./navbar";
 import { useEffect, useState } from "react";
 import { ConfigProvider, theme } from "antd";
@@ -28,7 +27,7 @@ export default function Layout({ children }) {
         },
       }}
     >
-      <div dir={dir} className="dark:bg-[#202c37]">
+      <div dir={dir} className="dark:bg-background-dark">
         <Navbar
           onChangeLanguage={() => setDir(toggleLanguage())}
           onChangeMode={() => setIsDark(toggleDarkMode(isDark))}

@@ -4,8 +4,8 @@ import { Input, Select, Space } from "antd";
 import { SearchOutlined } from "@ant-design/icons";
 import { useEffect, useState } from "react";
 import { filter } from "../utils/filter";
-import { getCountries } from "../utils/getCountries";
-import CountryCard from "../components/country_card";
+import { getCountries } from "../services/getCountries";
+import CountryCard from "../components/country-card";
 
 export default function Home() {
   const { data, isLoading, error } = useSWR(
@@ -22,18 +22,19 @@ export default function Home() {
       setFilteredData(
         filter(data, selectValue.toLowerCase(), searchValue.toLowerCase())
       );
+    console.log(filteredData);
   }, [data, selectValue, searchValue]);
 
   if (isLoading) {
     return (
-      <section className="h-[calc(100vh-4rem)] dark:text-white text-center text-3xl text-[800] mt-20">
+      <section className="h-[calc(100vh-4rem)] dark:text-light text-center text-3xl text-[800] mt-20">
         {t("LOADING")}
       </section>
     );
   }
   if (isLoading) {
     return (
-      <section className="h-[calc(100vh-4rem)] dark:text-white text-center text-3xl text-[800] mt-20">
+      <section className="h-[calc(100vh-4rem)] dark:text-light text-center text-3xl text-[800] mt-20">
         {error}
       </section>
     );

@@ -16,7 +16,3 @@ export default function Document() {
     </Html>
   );
 }
-
-//document
-//swr
-//fetching with ssg & swr
