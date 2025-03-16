@@ -1,10 +1,8 @@
 import { useTranslation } from "react-i18next";
-import useSWR from "swr";
 import { Input, Select, Space } from "antd";
 import { SearchOutlined } from "@ant-design/icons";
 import { useEffect, useState } from "react";
 import { filter } from "../utils/filter";
-import { getCountries } from "../services/getCountries";
 import CountryCard from "../components/country-card";
 import Loading from "../components/loading";
 import Error from "../components/error";
