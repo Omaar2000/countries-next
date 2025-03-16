@@ -2,8 +2,6 @@ import { Button } from "antd";
 import { ArrowLeftOutlined } from "@ant-design/icons";
 import { useTranslation } from "react-i18next";
 import Link from "next/link";
-import useSWR from "swr";
-import { getCountryDetails } from "../../services/getCountry";
 import Image from "next/image";
 import CountryProperty from "../../components/country-property";
 import Loading from "../../components/loading";
