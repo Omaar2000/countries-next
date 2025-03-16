@@ -33,7 +33,7 @@ const DetailPage = ({ id }) => {
     );
   }
 
-  if (country)
+  if (country?.length > 0)
     return (
       <main class="dark:text-light min-h-[calc(100vh-4rem)] px-6 md:px-20">
         <Link href={"/"}>
