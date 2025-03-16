@@ -6,12 +6,13 @@ import { useEffect, useState } from "react";
 import { filter } from "../utils/filter";
 import { getCountries } from "../services/getCountries";
 import CountryCard from "../components/country-card";
+import Loading from "../components/loading";
+import Error from "../components/error";
+import { useGetAllCountries } from "../hooks/useGetAllCountries";
 
 export default function Home() {
-  const { data, isLoading, error } = useSWR(
-    "https://restcountries.com/v3.1/all",
-    getCountries
-  );
+  const { data, isLoading, error } = useGetAllCountries();
+
   const { t } = useTranslation();
   const [filteredData, setFilteredData] = useState(data);
   const [searchValue, setSearchValue] = useState("");
@@ -28,14 +29,14 @@ export default function Home() {
   if (isLoading) {
     return (
       <section className="h-[calc(100vh-4rem)] dark:text-light text-center text-3xl text-[800] mt-20">
-        {t("LOADING")}
+        <Loading />
       </section>
     );
   }
-  if (isLoading) {
+  if (error) {
     return (
       <section className="h-[calc(100vh-4rem)] dark:text-light text-center text-3xl text-[800] mt-20">
-        {error}
+        {<Error error={error} />}
       </section>
     );
   }

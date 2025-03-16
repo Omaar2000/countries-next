@@ -6,6 +6,9 @@ import useSWR from "swr";
 import { getCountryDetails } from "../../services/getCountry";
 import Image from "next/image";
 import CountryProperty from "../../components/country-property";
+import Loading from "../../components/loading";
+import Error from "../../components/error";
+import { useGetCountryDetails } from "../../hooks/useGetCountryDetails";
 
 export const getServerSideProps = async (context) => {
   return { props: { id: context.params.id } };
@@ -13,28 +16,27 @@ export const getServerSideProps = async (context) => {
 
 const DetailPage = ({ id }) => {
   const { t, i18n } = useTranslation();
-  const {
-    data: country,
-    isLoading,
-    error,
-  } = useSWR(`https://restcountries.com/v3.1/alpha/${id}`, getCountryDetails);
-
+  const { country, isLoading, error } = useGetCountryDetails(id);
   const src = country && country[0]?.flags.png;
   if (isLoading) {
     return (
       <section className="h-[calc(100vh-4rem)] dark:text-light text-center text-3xl text-[800] mt-20">
-        {t("LOADING")}
+        <Loading />
       </section>
     );
   }
 
   if (error) {
-    return <>error</>;
+    return (
+      <section className="h-[calc(100vh-4rem)] dark:text-light text-center text-3xl text-[800] mt-20">
+        {<Error error={error} />}
+      </section>
+    );
   }
 
   if (country)
     return (
-      <main class="dark:text-light min-h-[calc(100vh-4rem)] px-20">
+      <main class="dark:text-light min-h-[calc(100vh-4rem)] px-6 md:px-20">
         <Link href={"/"}>
           <Button className="mt-10">
             {
@@ -45,11 +47,11 @@ const DetailPage = ({ id }) => {
             {t("BACK")}
           </Button>
         </Link>
-        <div class="flex flex-col md:flex-row justify-between gap-10">
+        <div class="flex flex-col md:flex-row mt-10 justify-between gap-10">
           <Image
-            width={350}
-            height={200}
-            class="country-flag md:w-5/12 py-10 pe-20 h-[25rem] object-cover"
+            width={500}
+            height={300}
+            className="country-flag md:w-5/12 mt-10 py-10 pe-20 h-[25rem] object-cover"
             loader={() => src}
             src={src}
             alt="country's flag"
