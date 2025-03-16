@@ -1,6 +1,6 @@
-const CountryProperty = ({ name, value }) => {
+const CountryProperty = ({ name, value, className }) => {
   return (
-    <p>
+    <p className={className}>
       <span>
         <strong>{name} : </strong>
       </span>

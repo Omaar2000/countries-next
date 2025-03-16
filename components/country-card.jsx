@@ -2,6 +2,7 @@ import { Card } from "antd";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useTranslation } from "react-i18next";
+import CountryProperty from "./country-property";
 
 const CountryCard = ({ country }) => {
   const { t } = useTranslation();
@@ -17,24 +18,21 @@ const CountryCard = ({ country }) => {
         <Card.Meta
           title={<span className="font-[700]"> {country.name.official}</span>}
         />
-        <p className="mt-4">
-          <span>
-            <strong>{t("POPULATION")} :</strong>
-          </span>
-          <span> {country.population}</span>
-        </p>
-        <p className="mt-1">
-          <span>
-            <strong>{t("REGION")} : </strong>
-          </span>
-          <span>{country.region}</span>
-        </p>
-        <p className="mt-1">
-          <span>
-            <strong>{t("CAPITAL")} : </strong>
-          </span>
-          <span>{country.capital}</span>
-        </p>
+        <CountryProperty
+          name={t("POPULATION")}
+          value={country.population}
+          className={"mt-4"}
+        />
+        <CountryProperty
+          name={t("REGION")}
+          value={country.region}
+          className={"mt-1"}
+        />
+        <CountryProperty
+          name={t("CAPITAL")}
+          value={country.capital ? country?.capital[0] : ""}
+          className={"mt-1"}
+        />
       </Card>
     </Link>
   );
