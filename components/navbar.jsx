@@ -10,7 +10,7 @@ const Navbar = ({ onChangeLanguage, onChangeMode, isDark }) => {
       {/* Header Section */}
       <Header
         itemType="primary"
-        className="dark:bg-dark-elements shadow-lg bg-white flex justify-between items-center p-6"
+        className="dark:bg-dark-elements shadow-lg bg-light-elements flex justify-between items-center p-6"
       >
         <h2 className="text-lg font-[700] ms-6">{t("TITLE")}</h2>
         <div className="flex gap-3 me-10 text-md">

@@ -19,7 +19,7 @@ const DetailPage = ({ id }) => {
   const src = country && country[0]?.flags.png;
   if (isLoading) {
     return (
-      <section className="h-[calc(100vh-4rem)] dark:text-light text-center text-3xl text-[800] mt-20">
+      <section className="h-[calc(100vh-4rem)] dark:text-light-elements text-center text-3xl text-[800] mt-20">
         <Loading />
       </section>
     );
@@ -27,7 +27,7 @@ const DetailPage = ({ id }) => {
 
   if (error) {
     return (
-      <section className="h-[calc(100vh-4rem)] dark:text-light text-center text-3xl text-[800] mt-20">
+      <section className="h-[calc(100vh-4rem)] dark:text-light-elements text-center text-3xl text-[800] mt-20">
         {<Error error={error} />}
       </section>
     );
@@ -35,7 +35,7 @@ const DetailPage = ({ id }) => {
 
   if (country?.length > 0)
     return (
-      <main class="dark:text-light min-h-[calc(100vh-4rem)] px-6 md:px-20">
+      <main class="dark:text-light-elements min-h-[calc(100vh-4rem)] px-6 md:px-20">
         <Link href={"/"}>
           <Button className="mt-10">
             {
