@@ -1,4 +1,4 @@
-export const getCountryDetails = async (url) => {
+export const getCountries = async (url: string) => {
   const res = await fetch(url);
   return res.json();
 };

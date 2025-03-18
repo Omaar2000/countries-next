@@ -1,4 +1,10 @@
-const CountryProperty = ({ name, value, className }) => {
+type CountryPropertyProps = {
+  name: string;
+  value: string | string[];
+  className?: string;
+};
+
+const CountryProperty = ({ name, value, className }: CountryPropertyProps) => {
   return (
     <p className={className}>
       <span>

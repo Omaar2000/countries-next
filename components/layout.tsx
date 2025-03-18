@@ -1,12 +1,12 @@
 import Navbar from "./navbar";
-import { useEffect, useState } from "react";
+import { ReactNode, useEffect, useState } from "react";
 import { ConfigProvider, theme } from "antd";
 import { loadInitialStates } from "../utils/loadInitialStates";
 import { toggleDarkMode } from "../utils/toggleMode";
 import { toggleLanguage } from "../utils/toggleLang";
 
-export default function Layout({ children }) {
-  let mode, direction;
+export default function Layout({ children }: { children: ReactNode }) {
+  let mode: boolean, direction: string;
   const [isDark, setIsDark] = useState(true);
   const [dir, setDir] = useState(direction);
 

@@ -1,5 +1,5 @@
 const NoData = ({ name }) => {
-  return <>No {name ? name : "Data"} to view</>;
+  return <div>No {name ? name : "Data"} to view</div>;
 };
 
 export default NoData;

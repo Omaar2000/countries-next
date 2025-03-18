@@ -19,17 +19,17 @@ const CountryCard = ({ country }) => {
           title={<span className="font-[700]"> {country.name.official}</span>}
         />
         <CountryProperty
-          name={t("POPULATION")}
+          name={t("population")}
           value={country.population}
           className={"mt-4"}
         />
         <CountryProperty
-          name={t("REGION")}
+          name={t("region")}
           value={country.region}
           className={"mt-1"}
         />
         <CountryProperty
-          name={t("CAPITAL")}
+          name={t("capital")}
           value={country.capital ? country?.capital[0] : ""}
           className={"mt-1"}
         />

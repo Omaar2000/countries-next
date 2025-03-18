@@ -6,7 +6,7 @@ import { filter } from "../utils/filter";
 import CountryCard from "../components/country-card";
 import Loading from "../components/loading";
 import Error from "../components/error";
-import { useGetAllCountries } from "../hooks/useGetAllCountries";
+import { useGetAllCountries } from "../hooks/countries/useGetAllCountries";
 
 export default function Home() {
   const { data, isLoading, error } = useGetAllCountries();
@@ -21,7 +21,6 @@ export default function Home() {
       setFilteredData(
         filter(data, selectValue.toLowerCase(), searchValue.toLowerCase())
       );
-    console.log(filteredData);
   }, [data, selectValue, searchValue]);
 
   if (isLoading) {
@@ -43,7 +42,7 @@ export default function Home() {
     <div className="min-h-[calc(100vh-4rem)] pb-20">
       <div className="flex flex-col md:flex-row md:justify-between md:items-center px-20 my-8">
         <Input
-          placeholder={`  ${t("SEARCH")}`}
+          placeholder={`  ${t("search")}`}
           prefix={<SearchOutlined />}
           className="w-72 mb-3 md:mb-0"
           type="secondary"
@@ -53,15 +52,15 @@ export default function Home() {
         />
         <Space wrap>
           <Select
-            placeholder={t("FILTER")}
+            placeholder={t("filter")}
             onChange={(value) => {
               setSelectValue(value);
             }}
             className="min-w-20"
             options={[
               {
-                value: t("FILTER"),
-                label: t("FILTER"),
+                value: t("filter"),
+                label: t("filter"),
                 disabled: true,
               },
               {
